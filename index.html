@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acurat — Agentic AI for Tax Review</title>
+  <meta name="description" content="Acurat helps CPA firms review tax returns faster with AI agents that analyze, compare, and surface what matters — so your team can focus on judgment." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --green: #1B7A5E;
+      --green-hover: #22956F;
+      --green-light: #e6f5ef;
+      --green-faint: #f0faf5;
+      --navy: #1A3152;
+      --navy-light: #E1E8F0;
+      --navy-faint: #F0F3F7;
+      --gold: #B8860B;
+      --gold-light: #FDF3D7;
+      --gold-faint: #FFFBEB;
+      --purple: #6B46C1;
+      --purple-light: #EDE5FF;
+      --purple-faint: #F8F5FF;
+      --teal: #0E6B7A;
+      --teal-light: #D4F0F5;
+      --dark: #0a1a14;
+      --dark-mid: #122a20;
+      --text: #1a2e26;
+      --text-secondary: #4a6b5e;
+      --text-tertiary: #7a9b8e;
+      --light: #f7faf9;
+      --white: #ffffff;
+      --border: #d8e8e0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .mono { font-family: 'JetBrains Mono', monospace; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
+    .container-narrow { max-width: 800px; margin: 0 auto; padding: 0 28px; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,0.85); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(27,122,94,0.08);
+    }
+    nav .inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: flex; align-items: center; justify-content: space-between; height: 60px;
+    }
+    .logo {
+      display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 19px;
+      color: var(--dark); letter-spacing: -0.3px;
+    }
+    .logo-mark {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: linear-gradient(135deg, var(--green) 0%, #2a9a78 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 17px; color: #fff;
+    }
+    nav ul { list-style: none; display: flex; gap: 36px; align-items: center; }
+    nav li a { font-size: 14px; font-weight: 600; color: var(--text-secondary); transition: color 0.15s; text-decoration: none; }
+    nav li a:hover { color: var(--green); }
+    .nav-btn {
+      padding: 8px 20px; border-radius: 8px; font-size: 13px; font-weight: 700;
+      background: var(--green); color: #fff !important; border: none; cursor: pointer; transition: all 0.15s;
+      text-decoration: none;
+    }
+    .nav-btn:hover { background: var(--green-hover); }
+
+    /* ─── HERO ─── */
+    .hero {
+      padding: 150px 0 100px; text-align: center;
+      background: radial-gradient(ellipse at 50% 0%, rgba(27,122,94,0.06) 0%, transparent 70%);
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: 80px; left: 50%; transform: translateX(-50%);
+      width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(27,122,94,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 18px; border-radius: 100px;
+      font-size: 13px; font-weight: 700; color: var(--green);
+      background: var(--green-faint); border: 1px solid rgba(27,122,94,0.12);
+      margin-bottom: 28px; letter-spacing: 0.2px;
+      animation: fadeSlideDown 0.6s ease forwards;
+    }
+    .hero-tag .dot {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--green);
+      animation: pulse 2s ease infinite;
+    }
+    .hero h1 {
+      font-size: 52px; font-weight: 800; line-height: 1.12; letter-spacing: -1.5px;
+      color: var(--dark); max-width: 680px; margin: 0 auto 24px;
+      min-height: 120px;
+    }
+    .hero h1 .typed-text { color: var(--green); }
+    .hero h1 .cursor {
+      display: inline-block; width: 3px; height: 48px; background: var(--green);
+      margin-left: 2px; vertical-align: text-bottom;
+      animation: blink 0.8s step-end infinite;
+    }
+    .hero p {
+      font-size: 19px; color: var(--text-secondary); max-width: 520px;
+      margin: 0 auto 40px; line-height: 1.65; font-weight: 500;
+      opacity: 0; animation: fadeSlideUp 0.6s ease 2.8s forwards;
+    }
+    .hero-btns {
+      display: flex; gap: 14px; justify-content: center;
+      opacity: 0; animation: fadeSlideUp 0.6s ease 3s forwards;
+    }
+    .btn-lg {
+      padding: 14px 34px; border-radius: 10px; font-size: 15px; font-weight: 700;
+      border: none; cursor: pointer; transition: all 0.2s; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-lg.primary { background: var(--green); color: #fff; }
+    .btn-lg.primary:hover { background: var(--green-hover); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(27,122,94,0.2); }
+    .btn-lg.ghost { background: transparent; color: var(--text); border: 1.5px solid var(--border); }
+    .btn-lg.ghost:hover { border-color: var(--green); color: var(--green); }
+
+    /* ─── SOCIAL PROOF ─── */
+    .proof {
+      padding: 48px 0; text-align: center; border-bottom: 1px solid var(--border);
+    }
+    .proof p { font-size: 13px; font-weight: 600; color: var(--text-tertiary); letter-spacing: 0.5px; text-transform: uppercase; }
+
+    /* ─── SECTION ─── */
+    .section { padding: 100px 0; }
+    .section-tag {
+      font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;
+      margin-bottom: 16px;
+    }
+    .section-heading {
+      font-size: 40px; font-weight: 800; line-height: 1.15; letter-spacing: -0.8px;
+      color: var(--dark); margin-bottom: 18px;
+    }
+    .section-desc {
+      font-size: 17px; color: var(--text-secondary); line-height: 1.7; max-width: 480px;
+    }
+
+    /* ─── FEATURES ─── */
+    .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .feat {
+      padding: 32px 28px; border-radius: 16px; border: 1px solid var(--border);
+      background: var(--white); transition: all 0.2s;
+    }
+    .feat:hover { border-color: var(--green); box-shadow: 0 4px 20px rgba(27,122,94,0.06); transform: translateY(-2px); }
+    .feat-icon {
+      width: 42px; height: 42px; border-radius: 10px; margin-bottom: 18px;
+      display: flex; align-items: center; justify-content: center; font-size: 18px;
+    }
+    .feat h3 { font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+    .feat p { font-size: 14px; color: var(--text-tertiary); line-height: 1.6; }
+
+    /* ─── AGENTS BANNER ─── */
+    .agents-banner {
+      background: var(--dark); color: #fff; border-radius: 20px; padding: 56px 48px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+    }
+    .agents-banner h2 {
+      font-size: 34px; font-weight: 800; line-height: 1.2; letter-spacing: -0.5px; margin-bottom: 16px;
+    }
+    .agents-banner h2 span { color: #5cc9a0; }
+    .agents-banner > div > p { font-size: 15px; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 24px; }
+    .agent-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .agent-tags span {
+      padding: 6px 14px; border-radius: 8px; font-size: 12px; font-weight: 600;
+      border: 1px solid rgba(255,255,255,0.1); transition: all 0.15s;
+    }
+    .agent-tags span:hover { background: rgba(92,201,160,0.15); color: #5cc9a0; border-color: rgba(92,201,160,0.3); }
+    .agent-tags .domain { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.65); }
+    .agent-tags .cross { background: rgba(26,49,82,0.3); color: rgba(225,232,240,0.8); }
+    .agent-tags .orch { background: rgba(107,70,193,0.2); color: rgba(237,229,255,0.85); }
+    .pipeline-visual { display: flex; flex-direction: column; gap: 12px; }
+    .pipe-step {
+      display: flex; align-items: center; gap: 14px; padding: 16px 20px;
+      border-radius: 12px; background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+    .pipe-num {
+      width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center;
+      justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0;
+    }
+    .pipe-step h4 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+    .pipe-step p { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.4; }
+
+    /* ─── HOW IT WORKS ─── */
+    .how-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+    .how-step { text-align: center; }
+    .how-num {
+      font-family: 'JetBrains Mono', monospace; font-size: 44px; font-weight: 600;
+      margin-bottom: 12px; line-height: 1;
+    }
+    .how-step h4 { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .how-step p { font-size: 14px; color: var(--text-tertiary); line-height: 1.55; }
+
+    /* ─── PRODUCTS ─── */
+    .products { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .prod {
+      padding: 36px 28px; border-radius: 16px; text-align: center;
+      border: 1px solid var(--border); background: var(--white); transition: all 0.2s;
+    }
+    .prod:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,0.06); }
+    .prod.featured { border-color: var(--green); background: var(--green-faint); }
+    .prod-icon {
+      width: 52px; height: 52px; border-radius: 14px; margin: 0 auto 18px;
+      display: flex; align-items: center; justify-content: center; font-size: 22px;
+    }
+    .prod h3 { font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+    .prod p { font-size: 14px; color: var(--text-tertiary); line-height: 1.6; }
+    .prod-badge {
+      display: inline-block; margin-top: 16px; padding: 4px 14px; border-radius: 6px;
+      font-size: 11px; font-weight: 700;
+    }
+
+    /* ─── ABOUT ─── */
+    .about-section {
+      background: linear-gradient(135deg, var(--navy-faint) 0%, var(--green-faint) 50%, var(--gold-faint) 100%);
+    }
+    .about-inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center;
+    }
+    .about-inner h2 {
+      font-size: 36px; font-weight: 800; line-height: 1.2; letter-spacing: -0.5px;
+      color: var(--dark); margin-bottom: 20px;
+    }
+    .about-inner h2 span { color: var(--green); }
+    .about-inner p { font-size: 16px; color: var(--text-secondary); line-height: 1.75; margin-bottom: 16px; }
+    .about-values { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .about-val {
+      padding: 18px 20px; border-radius: 12px; background: var(--white);
+      border: 1px solid var(--border);
+    }
+    .about-val h4 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+    .about-val p { font-size: 12px; color: var(--text-tertiary); line-height: 1.5; margin: 0; }
+
+    /* ─── CTA ─── */
+    .cta {
+      padding: 100px 0; text-align: center;
+      background: linear-gradient(160deg, var(--dark) 0%, #0d2b1f 60%, var(--green) 100%);
+      color: #fff;
+    }
+    .cta h2 { font-size: 40px; font-weight: 800; margin-bottom: 16px; letter-spacing: -0.5px; }
+    .cta p { font-size: 17px; color: rgba(255,255,255,0.6); max-width: 440px; margin: 0 auto 36px; line-height: 1.65; }
+    .btn-white {
+      padding: 14px 36px; border-radius: 10px; background: #fff; color: var(--green);
+      font-weight: 700; font-size: 15px; border: none; cursor: pointer; transition: all 0.2s;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-white:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      padding: 48px 0 32px; background: var(--dark); color: rgba(255,255,255,0.4);
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 40px;
+    }
+    .footer-brand .logo { color: #fff; margin-bottom: 14px; }
+    .footer-brand .logo-mark { background: var(--green); }
+    .footer-brand p { font-size: 13px; line-height: 1.65; max-width: 240px; }
+    footer h4 {
+      font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+      color: rgba(255,255,255,0.25); margin-bottom: 18px;
+    }
+    footer ul { list-style: none; }
+    footer li { margin-bottom: 10px; }
+    footer li a { font-size: 14px; color: rgba(255,255,255,0.5); transition: color 0.15s; text-decoration: none; }
+    footer li a:hover { color: #fff; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px;
+      display: flex; justify-content: space-between; font-size: 12px;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .hero h1 { font-size: 36px; min-height: 90px; }
+      .hero h1 .cursor { height: 34px; }
+      .features, .products { grid-template-columns: 1fr 1fr; }
+      .agents-banner { grid-template-columns: 1fr; padding: 36px 28px; }
+      .how-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+      .about-inner { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 28px; min-height: 70px; }
+      .hero h1 .cursor { height: 26px; }
+      .hero p { font-size: 16px; }
+      .features, .products, .how-grid { grid-template-columns: 1fr; }
+      .hero-btns { flex-direction: column; align-items: center; }
+      .about-values { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      nav ul { gap: 18px; }
+      .section-heading { font-size: 30px; }
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeSlideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="inner">
+      <div class="logo">
+        <div class="logo-mark">A</div>
+        Acurat
+      </div>
+      <ul>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#cta" class="nav-btn">Request Demo</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container-narrow">
+      <div class="hero-tag"><span class="dot"></span> Agentic AI for Tax</div>
+      <h1 id="hero-heading"></h1>
+      <p>
+        AI agents analyze every return, surface what matters, and let your CPAs focus on judgment — not line-by-line checking.
+      </p>
+      <div class="hero-btns">
+        <a href="#cta" class="btn-lg primary">Get Early Access &rarr;</a>
+        <a href="#how" class="btn-lg ghost">See How It Works</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF -->
+  <section class="proof">
+    <div class="container">
+      <p>Built for CPA firms that review 1040s at scale</p>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="section" id="features">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 56px;">
+        <div class="section-tag" style="color: var(--green);">Platform</div>
+        <div class="section-heading" style="max-width: 500px; margin: 0 auto 16px;">Everything between upload and sign-off</div>
+        <div class="section-desc" style="margin: 0 auto; max-width: 460px; text-align: center;">
+          Upload returns, let agents run, review findings, and sign off — all in one place.
+        </div>
+      </div>
+
+      <div class="features">
+        <div class="feat">
+          <div class="feat-icon" style="background: var(--green-faint); color: var(--green);">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="m9 15 2 2 4-4"/></svg>
+          </div>
+          <h3>Agent-Powered Review</h3>
+          <p>Domain-specific AI agents run in parallel, each grounded in IRS publications and IRC sections. Findings come with confidence scores and source citations.</p>
+        </div>
+
+        <div class="feat">
+          <div class="feat-icon" style="background: var(--navy-light); color: var(--navy);">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+          </div>
+          <h3>Year-over-Year Comparison</h3>
+          <p>Side-by-side federal and state comparison with smart filters. Spot income swings, missing forms, and carryover breaks instantly.</p>
+        </div>
+
+        <div class="feat">
+          <div class="feat-icon" style="background: var(--gold-light); color: var(--gold);">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          </div>
+          <h3>Configurable Skills</h3>
+          <p>Toggle and tune 40+ review skills — wash sale detection, QBI engine, NIIT validation — to match your firm's practice areas.</p>
+        </div>
+
+        <div class="feat">
+          <div class="feat-icon" style="background: var(--purple-light); color: var(--purple);">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Team Dashboard</h3>
+          <p>Track your review pipeline, assign returns to CPAs, monitor resolution rates, and generate reports for partners.</p>
+        </div>
+
+        <div class="feat">
+          <div class="feat-icon" style="background: var(--teal-light); color: var(--teal);">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 19v2M4.22 4.22l1.42 1.42M16.36 16.36l1.42 1.42M1 12h2M19 12h2M4.22 19.78l1.42-1.42M16.36 5.64l1.42-1.42"/></svg>
+          </div>
+          <h3>Human-in-the-Loop</h3>
+          <p>Confidence-based routing surfaces only what needs human judgment. High-confidence items auto-approve. Ambiguous items escalate with context.</p>
+        </div>
+
+        <div class="feat">
+          <div class="feat-icon" style="background: var(--gold-faint); color: var(--gold);">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Audit Trail & Sign-Off</h3>
+          <p>Every action is logged. Electronic sign-off with a full checklist. Export findings to PDF, Excel, or CSV for your records.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AGENTS BANNER -->
+  <section class="section" style="background: var(--light);">
+    <div class="container">
+      <div class="agents-banner">
+        <div>
+          <h2>Powered by <span>12 specialized agents</span></h2>
+          <p>
+            Eight domain agents each own a specific area of the 1040. Three cross-cutting agents handle AGI coordination, year-over-year comparison, and inter-agent validation. One orchestrator routes findings to your CPAs based on confidence.
+          </p>
+          <div class="agent-tags">
+            <span class="domain">Mortgage Interest</span>
+            <span class="domain">Investment Income</span>
+            <span class="domain">Business & SE Tax</span>
+            <span class="domain">Capital Gains</span>
+            <span class="domain">Rental & Passive</span>
+            <span class="domain">Wages & Medicare</span>
+            <span class="domain">NIIT Aggregator</span>
+            <span class="domain">Dependent Credits</span>
+            <span class="cross">AGI Engine</span>
+            <span class="cross">Prior Year Compare</span>
+            <span class="cross">Cross-Validation</span>
+            <span class="orch">Escalation Router</span>
+          </div>
+        </div>
+        <div class="pipeline-visual">
+          <div class="pipe-step">
+            <div class="pipe-num" style="background: rgba(92,201,160,0.15); color: #5cc9a0;">1</div>
+            <div>
+              <h4>Domain Execution</h4>
+              <p>All domain agents run in parallel, each querying its own IRS knowledge base</p>
+            </div>
+          </div>
+          <div class="pipe-step">
+            <div class="pipe-num" style="background: rgba(225,232,240,0.1); color: rgba(225,232,240,0.7);">2</div>
+            <div>
+              <h4>Cross-Validation</h4>
+              <p>Orchestrator validates inter-agent dependencies and AGI consistency</p>
+            </div>
+          </div>
+          <div class="pipe-step">
+            <div class="pipe-num" style="background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.5);">3</div>
+            <div>
+              <h4>Prior Year Comparison</h4>
+              <p>Compares findings against prior year baseline, flags material changes</p>
+            </div>
+          </div>
+          <div class="pipe-step" style="border-color: rgba(92,201,160,0.2); background: rgba(92,201,160,0.05);">
+            <div class="pipe-num" style="background: rgba(92,201,160,0.2); color: #5cc9a0;">&rarr;</div>
+            <div>
+              <h4>CPA Review</h4>
+              <p>Findings routed by confidence: auto-approve, quick review, or escalate</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section" id="how">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 56px;">
+        <div class="section-tag" style="color: var(--navy);">How It Works</div>
+        <div class="section-heading" style="max-width: 420px; margin: 0 auto;">Four steps, upload to sign-off</div>
+      </div>
+
+      <div class="how-grid">
+        <div class="how-step">
+          <div class="how-num" style="color: var(--green-light);">01</div>
+          <h4>Upload</h4>
+          <p>Drop your tax documents. Acurat detects form types and tax year automatically.</p>
+        </div>
+        <div class="how-step">
+          <div class="how-num" style="color: var(--navy-light);">02</div>
+          <h4>Agents Run</h4>
+          <p>12 agents execute in a 3-pass pipeline. Findings appear in real-time with dollar impact.</p>
+        </div>
+        <div class="how-step">
+          <div class="how-num" style="color: var(--gold-light);">03</div>
+          <h4>Review</h4>
+          <p>Your CPAs review escalated items, add notes, and resolve findings that need judgment.</p>
+        </div>
+        <div class="how-step">
+          <div class="how-num" style="color: var(--purple-light);">04</div>
+          <h4>Sign Off</h4>
+          <p>Complete the checklist, sign electronically, and export the full review for your files.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="section" id="products" style="background: var(--light);">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 56px;">
+        <div class="section-tag" style="color: var(--gold);">Products</div>
+        <div class="section-heading" style="max-width: 420px; margin: 0 auto;">Three products, one platform</div>
+      </div>
+
+      <div class="products">
+        <div class="prod">
+          <div class="prod-icon" style="background: var(--gold-light); color: var(--gold);">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h8"/></svg>
+          </div>
+          <h3>K-1 Extraction</h3>
+          <p>Automated data extraction from partnership, S-Corp, and trust K-1 documents with line-item precision.</p>
+          <span class="prod-badge" style="background: var(--gold-light); color: var(--gold);">Document Intelligence</span>
+        </div>
+
+        <div class="prod featured">
+          <div class="prod-icon" style="background: var(--green-light); color: var(--green);">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </div>
+          <h3>1040 Review</h3>
+          <p>12 AI agents in a 3-pass pipeline with configurable skills and human-in-the-loop escalation.</p>
+          <span class="prod-badge" style="background: var(--green-light); color: var(--green);">Agentic AI Review</span>
+        </div>
+
+        <div class="prod">
+          <div class="prod-icon" style="background: var(--purple-light); color: var(--purple);">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <h3>Anonymizer</h3>
+          <p>Detect and redact PII from tax documents. Supports masking, tokenization, and full redaction.</p>
+          <span class="prod-badge" style="background: var(--purple-light); color: var(--purple);">Data Protection</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section about-section" id="about">
+    <div class="container">
+      <div class="about-inner">
+        <div>
+          <div class="section-tag" style="color: var(--purple);">About Acurat</div>
+          <h2>We believe tax review deserves <span>better tools</span></h2>
+          <p>
+            CPA firms spend thousands of hours every season on manual review — checking the same lines, catching the same errors, chasing the same carryovers. We started Acurat because we believe agentic AI can fundamentally change how returns are reviewed — not by replacing CPAs, but by giving them an intelligent first pass they can trust.
+          </p>
+          <p>
+            Our platform is built by a team that understands both tax and AI deeply. Every agent is grounded in IRS publications and IRC sections. Every finding is traceable to a source. And every escalation is designed to respect the professional judgment that only a human reviewer can provide.
+          </p>
+        </div>
+        <div class="about-values">
+          <div class="about-val">
+            <h4 style="color: var(--green);">Accuracy First</h4>
+            <p>Every finding backed by IRS publications. No hallucinated tax advice — ever.</p>
+          </div>
+          <div class="about-val">
+            <h4 style="color: var(--navy);">CPA in Control</h4>
+            <p>AI handles volume. Your team handles judgment. Confidence scoring keeps humans in the loop.</p>
+          </div>
+          <div class="about-val">
+            <h4 style="color: var(--gold);">Domain Expertise</h4>
+            <p>12 agents, each a specialist. From mortgage interest to passive activity rules.</p>
+          </div>
+          <div class="about-val">
+            <h4 style="color: var(--purple);">Your Practice, Your Rules</h4>
+            <p>40+ configurable skills. Enable what your firm needs, disable what it doesn't.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="cta">
+    <div class="container-narrow">
+      <h2>Ready to see agentic AI review in action?</h2>
+      <p>Talk to our team and see how Acurat fits into your firm's review workflow.</p>
+      <a href="#" class="btn-white">Schedule a Demo &rarr;</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <div class="logo-mark">A</div>
+            Acurat
+          </div>
+          <p>Agentic AI for CPA firms. Review returns with confidence.</p>
+        </div>
+        <div>
+          <h4>Platform</h4>
+          <ul>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#how">How It Works</a></li>
+            <li><a href="#about">About</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Products</h4>
+          <ul>
+            <li><a href="#products">1040 Review</a></li>
+            <li><a href="#products">K-1 Extraction</a></li>
+            <li><a href="#products">Anonymizer</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#">Security</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2025 Acurat. All rights reserved.</span>
+        <span>Built for firms that demand accuracy.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- TYPING EFFECT -->
+  <script>
+    (function() {
+      const el = document.getElementById('hero-heading');
+      const lines = [
+        { text: 'Tax review that ', accent: false },
+        { text: 'thinks', accent: true },
+        { text: ' before your team does', accent: false }
+      ];
+      let lineIdx = 0, charIdx = 0;
+      let html = '';
+
+      function addCursor() {
+        return '<span class="cursor"></span>';
+      }
+
+      function type() {
+        if (lineIdx >= lines.length) {
+          el.innerHTML = html;
+          return;
+        }
+
+        const line = lines[lineIdx];
+        const char = line.text[charIdx];
+
+        if (line.accent && charIdx === 0) {
+          html += '<span class="typed-text">';
+        }
+
+        html += char;
+
+        if (line.accent && charIdx === line.text.length - 1) {
+          html += '</span>';
+        }
+
+        charIdx++;
+        el.innerHTML = html + addCursor();
+
+        if (charIdx >= line.text.length) {
+          lineIdx++;
+          charIdx = 0;
+        }
+
+        const delay = line.accent ? 70 : 35;
+        setTimeout(type, delay);
+      }
+
+      setTimeout(type, 600);
+    })();
+  </script>
+
+</body>
+</html>
