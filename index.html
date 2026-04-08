@@ -436,7 +436,7 @@
         <li><a href="#products">Products</a></li>
         <li><a href="#how">How It Works</a></li>
         <li><a href="#about">About</a></li>
-        <li><a href="#" class="nav-btn" onclick="openContactModal(event)">Request Demo</a></li>
+        <li><a href="#" class="nav-btn" onclick="openContactModal(event)">Request a Demo</a></li>
       </ul>
     </div>
   </nav>
@@ -450,7 +450,7 @@
         AI agents analyze every return, surface what matters, and let your reviewers focus on judgment — not line-by-line checking.
       </p>
       <div class="hero-btns">
-        <a href="#" class="btn-lg primary" onclick="openContactModal(event)">Get Early Access &rarr;</a>
+        <a href="#" class="btn-lg primary" onclick="openContactModal(event)">Request a Demo &rarr;</a>
         <a href="#how" class="btn-lg ghost">See How It Works</a>
       </div>
     </div>
@@ -665,7 +665,7 @@
         <div class="about-values">
           <div class="about-val">
             <h4 style="color: var(--green);">Accuracy First</h4>
-            <p>Every finding backed by IRS publications. No hallucinated tax advice — ever.</p>
+            <p>Every finding backed by IRS publications and traceable to source.</p>
           </div>
           <div class="about-val">
             <h4 style="color: var(--navy);">Reviewer in Control</h4>
@@ -703,7 +703,6 @@
             Acurat
           </div>
           <p>Acurat, Inc.<br>Corporation Trust Center<br>1209 Orange St, Wilmington, DE 19801</p>
-          <p style="margin-top: 8px;"><a href="tel:302-658-7581" style="color: rgba(255,255,255,0.5); text-decoration: none;">302-658-7581</a></p>
         </div>
         <div>
           <h4>Platform</h4>
@@ -723,9 +722,6 @@
           <h4>Company</h4>
           <ul>
             <li><a href="#about">About</a></li>
-            <li><a href="#">Security</a></li>
-            <li><a href="#">Privacy</a></li>
-            <li><a href="#">Terms</a></li>
           </ul>
         </div>
       </div>
@@ -805,7 +801,7 @@
         <input type="tel" id="ctaPhone" placeholder="+1 (555) 000-0000" />
         <label>Message</label>
         <textarea id="ctaMessage" placeholder="Tell us about your review workflow..."></textarea>
-        <button class="btn-submit" id="ctaSubmit" onclick="submitContact()">Request Demo</button>
+        <button class="btn-submit" id="ctaSubmit" onclick="submitContact()">Request a Demo</button>
       </div>
       <div class="form-success" id="contactSuccess" style="display:none;">
         <div class="check">&#10003;</div>
@@ -826,7 +822,7 @@
       document.getElementById('contactSuccess').style.display = 'none';
       document.getElementById('formError').style.display = 'none';
       document.getElementById('ctaSubmit').disabled = false;
-      document.getElementById('ctaSubmit').textContent = 'Request Demo';
+      document.getElementById('ctaSubmit').textContent = 'Request a Demo';
     }
     function closeContactModal() {
       document.getElementById('contactModal').classList.remove('open');
@@ -885,13 +881,13 @@
           errEl.textContent = 'Something went wrong. Please try again.';
           errEl.style.display = 'block';
           btn.disabled = false;
-          btn.textContent = 'Request Demo';
+          btn.textContent = 'Request a Demo';
         }
       } catch (err) {
         errEl.textContent = 'Network error. Please check your connection and try again.';
         errEl.style.display = 'block';
         btn.disabled = false;
-        btn.textContent = 'Request Demo';
+        btn.textContent = 'Request a Demo';
       }
     }
   </script>
