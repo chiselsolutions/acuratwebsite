@@ -309,7 +309,9 @@
       .hero h1 { font-size: 36px; min-height: 90px; }
       .hero h1 .cursor { height: 34px; }
       .features, .products { grid-template-columns: 1fr 1fr; }
-      .benefits-grid { grid-template-columns: repeat(3, 1fr) !important; }
+      .impact-grid { grid-template-columns: 1fr 1fr !important; }
+      .impact-grid > div:last-child { grid-column: 1 / -1 !important; }
+      .who-grid { grid-template-columns: repeat(2, 1fr) !important; }
       .agents-banner { grid-template-columns: 1fr; padding: 36px 28px; }
       .how-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
       .about-inner { grid-template-columns: 1fr; }
@@ -339,7 +341,9 @@
       .section { padding: 72px 0; }
       .section-heading { font-size: 28px; }
       .features, .products, .how-grid { grid-template-columns: 1fr; }
-      .benefits-grid { grid-template-columns: 1fr 1fr !important; }
+      .impact-grid { grid-template-columns: 1fr !important; }
+      .impact-grid > div:last-child { grid-column: auto !important; }
+      .who-grid { grid-template-columns: 1fr !important; }
       .hero-btns { flex-direction: column; align-items: center; }
       .about-inner { grid-template-columns: 1fr; }
       .about-values { grid-template-columns: 1fr; }
@@ -528,94 +532,92 @@
     </div>
   </section>
 
+  <!-- WHO IS THIS FOR -->
+  <section class="section" id="who">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 48px;">
+        <div class="section-tag" style="color: var(--teal);">Who Is This For?</div>
+        <div class="section-heading" style="max-width: 480px; margin: 0 auto;">Built for firms that want to do more with the team they have</div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;" class="who-grid">
+        <div style="background: var(--white); border-radius: 14px; padding: 32px 24px; border: 1px solid var(--border); text-align: center; transition: all 0.2s;" onmouseenter="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.06)'" onmouseleave="this.style.transform='none';this.style.boxShadow='none'">
+          <div style="width: 48px; height: 48px; border-radius: 12px; background: var(--green-faint); color: var(--green); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 20px;">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          </div>
+          <h4 style="font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 8px;">Firms wanting to scale</h4>
+          <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">Handle more returns without hiring additional reviewers.</p>
+        </div>
+
+        <div style="background: var(--white); border-radius: 14px; padding: 32px 24px; border: 1px solid var(--border); text-align: center; transition: all 0.2s;" onmouseenter="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.06)'" onmouseleave="this.style.transform='none';this.style.boxShadow='none'">
+          <div style="width: 48px; height: 48px; border-radius: 12px; background: var(--navy-light); color: var(--navy); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 20px;">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </div>
+          <h4 style="font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 8px;">Firms wanting consistency</h4>
+          <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">Every return reviewed with the same rigor, regardless of who's assigned.</p>
+        </div>
+
+        <div style="background: var(--white); border-radius: 14px; padding: 32px 24px; border: 1px solid var(--border); text-align: center; transition: all 0.2s;" onmouseenter="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.06)'" onmouseleave="this.style.transform='none';this.style.boxShadow='none'">
+          <div style="width: 48px; height: 48px; border-radius: 12px; background: var(--gold-light); color: var(--gold); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 20px;">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+          </div>
+          <h4 style="font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 8px;">Firms wanting to reduce workload</h4>
+          <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">Let AI handle the first pass so your reviewers focus on judgment calls.</p>
+        </div>
+
+        <div style="background: var(--white); border-radius: 14px; padding: 32px 24px; border: 1px solid var(--border); text-align: center; transition: all 0.2s;" onmouseenter="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.06)'" onmouseleave="this.style.transform='none';this.style.boxShadow='none'">
+          <div style="width: 48px; height: 48px; border-radius: 12px; background: var(--purple-light); color: var(--purple); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 20px;">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <h4 style="font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 8px;">Firms with offshore teams</h4>
+          <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">Standardize review quality across all locations and time zones.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- WHY IT MATTERS -->
   <section class="section" style="background: var(--light);">
     <div class="container">
-      <div style="text-align: center; margin-bottom: 48px;">
-        <div class="section-tag" style="color: var(--navy);">Why It Matters</div>
-        <div class="section-heading" style="max-width: 520px; margin: 0 auto;">The impact on your practice</div>
+      <div style="text-align: center; margin-bottom: 56px;">
+        <div class="section-heading" style="max-width: 600px; margin: 0 auto;">The <span style="color: var(--green); position: relative; display: inline-block;">impact<span style="position: absolute; bottom: -2px; left: 0; right: 0; height: 3px; background: var(--green); border-radius: 2px; opacity: 0.3;"></span></span> on your practice</div>
       </div>
 
-      <div class="benefits-grid" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-bottom: 48px;">
-        <div style="background: var(--white); border-radius: 14px; padding: 28px 22px; text-align: center; border: 1px solid var(--border);">
-          <div style="font-size: 28px; font-weight: 800; color: var(--green); margin-bottom: 6px; font-family: 'JetBrains Mono', monospace;">50%</div>
-          <div style="font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 4px;">Reduced review time</div>
-          <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.5;">AI handles the first pass so your team focuses on what needs judgment.</div>
-        </div>
-        <div style="background: var(--white); border-radius: 14px; padding: 28px 22px; text-align: center; border: 1px solid var(--border);">
-          <div style="font-size: 28px; font-weight: 800; color: var(--navy); margin-bottom: 6px; font-family: 'JetBrains Mono', monospace;">↓</div>
-          <div style="font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 4px;">Fewer errors</div>
-          <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.5;">Every line checked against IRS rules, carryovers, and prior year — nothing slips through.</div>
-        </div>
-        <div style="background: var(--white); border-radius: 14px; padding: 28px 22px; text-align: center; border: 1px solid var(--border);">
-          <div style="font-size: 28px; font-weight: 800; color: var(--gold); margin-bottom: 6px; font-family: 'JetBrains Mono', monospace;">+</div>
-          <div style="font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 4px;">More advisory hours</div>
-          <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.5;">Time saved on compliance becomes time spent on higher-value advisory work.</div>
-        </div>
-        <div style="background: var(--white); border-radius: 14px; padding: 28px 22px; text-align: center; border: 1px solid var(--border);">
-          <div style="font-size: 28px; font-weight: 800; color: var(--purple); margin-bottom: 6px; font-family: 'JetBrains Mono', monospace;">—</div>
-          <div style="font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 4px;">Less staff burnout</div>
-          <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.5;">Your team handles more returns without the late nights and manual line-checking.</div>
-        </div>
-        <div style="background: var(--white); border-radius: 14px; padding: 28px 22px; text-align: center; border: 1px solid var(--border);">
-          <div style="font-size: 28px; font-weight: 800; color: var(--teal); margin-bottom: 6px; font-family: 'JetBrains Mono', monospace;">✓</div>
-          <div style="font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 4px;">Consistent reviews</div>
-          <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.5;">Every return reviewed with the same rigor — regardless of who's assigned.</div>
-        </div>
-      </div>
+      <!-- 2-column grid, alternating white/light backgrounds -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 900px; margin: 0 auto;" class="impact-grid">
 
-      <!-- Agents (supporting) -->
-      <div class="agents-banner">
-        <div>
-          <h2>Powered by <span>specialized agents</span></h2>
-          <p>
-            Domain agents each own a specific area of the 1040 — from mortgage interest to capital gains. Cross-cutting agents handle AGI coordination, year-over-year comparison, and inter-agent validation. An orchestrator routes findings to your reviewers based on confidence.
-          </p>
-          <div class="agent-tags">
-            <span class="domain">Mortgage Interest</span>
-            <span class="domain">Investment Income</span>
-            <span class="domain">Business & SE Tax</span>
-            <span class="domain">Capital Gains</span>
-            <span class="domain">Rental & Passive</span>
-            <span class="domain">Wages & Medicare</span>
-            <span class="domain">NIIT Aggregator</span>
-            <span class="domain">Dependent Credits</span>
-            <span class="cross">AGI Engine</span>
-            <span class="cross">Prior Year Compare</span>
-            <span class="cross">Cross-Validation</span>
-            <span class="orch">Escalation Router</span>
+        <div style="padding: 30px 28px; border-radius: 14px; background: var(--white); border: 1px solid var(--border);">
+          <div style="width: 44px; height: 44px; border-radius: 11px; background: var(--green-faint); display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
           </div>
+          <div style="font-size: 16px; font-weight: 800; color: var(--dark); margin-bottom: 6px;">Reduced review time</div>
+          <div style="font-size: 13px; color: var(--text-secondary); line-height: 1.65;">AI handles the first pass so your team focuses on what needs judgment.</div>
         </div>
-        <div class="pipeline-visual">
-          <div class="pipe-step">
-            <div class="pipe-num" style="background: rgba(92,201,160,0.15); color: #5cc9a0;">1</div>
-            <div>
-              <h4>Domain Execution</h4>
-              <p>Each agent queries its own IRS knowledge base in parallel</p>
-            </div>
+
+        <div style="padding: 30px 28px; border-radius: 14px; background: var(--white); border: 1px solid var(--border);">
+          <div style="width: 44px; height: 44px; border-radius: 11px; background: var(--navy-light); display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
           </div>
-          <div class="pipe-step">
-            <div class="pipe-num" style="background: rgba(225,232,240,0.1); color: rgba(225,232,240,0.7);">2</div>
-            <div>
-              <h4>Cross-Validation</h4>
-              <p>Orchestrator validates inter-agent dependencies and AGI consistency</p>
-            </div>
-          </div>
-          <div class="pipe-step">
-            <div class="pipe-num" style="background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.5);">3</div>
-            <div>
-              <h4>Prior Year Comparison</h4>
-              <p>Compares findings against prior year baseline, flags material changes</p>
-            </div>
-          </div>
-          <div class="pipe-step" style="border-color: rgba(92,201,160,0.2); background: rgba(92,201,160,0.05);">
-            <div class="pipe-num" style="background: rgba(92,201,160,0.2); color: #5cc9a0;">&rarr;</div>
-            <div>
-              <h4>Reviewer Sign-Off</h4>
-              <p>Findings routed by confidence: auto-approve, quick review, or escalate</p>
-            </div>
-          </div>
+          <div style="font-size: 16px; font-weight: 800; color: var(--dark); margin-bottom: 6px;">Fewer errors</div>
+          <div style="font-size: 13px; color: var(--text-secondary); line-height: 1.65;">Every line checked against IRS rules, carryovers, and prior year — nothing slips through.</div>
         </div>
+
+        <div style="padding: 30px 28px; border-radius: 14px; background: var(--white); border: 1px solid var(--border);">
+          <div style="width: 44px; height: 44px; border-radius: 11px; background: var(--gold-light); display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div style="font-size: 16px; font-weight: 800; color: var(--dark); margin-bottom: 6px;">More advisory hours</div>
+          <div style="font-size: 13px; color: var(--text-secondary); line-height: 1.65;">Time saved on compliance becomes time spent on higher-value advisory work.</div>
+        </div>
+
+        <div style="padding: 30px 28px; border-radius: 14px; background: var(--white); border: 1px solid var(--border);">
+          <div style="width: 44px; height: 44px; border-radius: 11px; background: var(--purple-light); display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2.5" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div style="font-size: 16px; font-weight: 800; color: var(--dark); margin-bottom: 6px;">Less staff burnout</div>
+          <div style="font-size: 13px; color: var(--text-secondary); line-height: 1.65;">Your team handles more returns without the late nights and manual line-checking.</div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -647,7 +649,7 @@
         <div class="how-step">
           <div class="how-num" style="color: var(--purple-light);">04</div>
           <h4>Sign Off</h4>
-          <p>Complete the checklist and export the full review for your files.</p>
+          <p>Complete the checklist and export the full review.</p>
         </div>
       </div>
     </div>
@@ -672,7 +674,7 @@
           <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 18px;">
             AI agents review every line of the 1040 — income, deductions, credits, and multi-state allocations. Each finding comes with source citations, prior-year comparison, and a confidence score so your reviewers know exactly where to focus.
           </p>
-          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+          <div style="display: flex; flex-wrap: nowrap; gap: 8px;">
             <span class="prod-badge" style="background: var(--green-light); color: var(--green);">Agentic AI Review</span>
             <span class="prod-badge" style="background: var(--navy-light); color: var(--navy);">Prior Year Comparison</span>
             <span class="prod-badge" style="background: var(--gold-light); color: var(--gold);">Configurable Skills</span>
@@ -694,7 +696,7 @@
             CPA firms spend thousands of hours every season on manual review — checking the same lines, catching the same errors, chasing the same carryovers. We started Acurat because we believe agentic AI can fundamentally change how returns are reviewed — not by replacing reviewers, but by giving them an intelligent first pass they can trust.
           </p>
           <p>
-            Our platform is built by a team that understands both tax and AI deeply. Every agent is grounded in IRS publications and IRC sections. Every finding is traceable to a source. And every escalation is designed to respect the professional judgment that only a human reviewer can provide.
+            Our platform is built by a team that understands both tax and AI deeply. Every finding is grounded in IRS publications and traceable to a source. 1040 review is just the beginning — we're expanding to support every return type and every stage of the tax workflow.
           </p>
         </div>
         <div class="about-values">
@@ -731,33 +733,19 @@
   <!-- FOOTER -->
   <footer>
     <div class="container">
-      <div class="footer-grid">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 40px;">
         <div class="footer-brand">
           <div class="logo">
             <div class="logo-mark">A</div>
             Acurat
           </div>
-          <p>Acurat, Inc.<br>Corporation Trust Center<br>1209 Orange St, Wilmington, DE 19801</p>
+          <p style="margin-top: 8px;">Agentic AI for tax return review.</p>
         </div>
-        <div>
-          <h4>Platform</h4>
-          <ul>
-            <li><a href="#features">Features</a></li>
-            <li><a href="#how">How It Works</a></li>
-            <li><a href="#about">About</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Product</h4>
-          <ul>
-            <li><a href="#products">1040 Review</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Company</h4>
-          <ul>
-            <li><a href="#about">About</a></li>
-          </ul>
+        <div style="display: flex; gap: 36px;">
+          <a href="#features" style="font-size: 14px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.15s;" onmouseenter="this.style.color='#fff'" onmouseleave="this.style.color='rgba(255,255,255,0.5)'">Features</a>
+          <a href="#products" style="font-size: 14px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.15s;" onmouseenter="this.style.color='#fff'" onmouseleave="this.style.color='rgba(255,255,255,0.5)'">Product</a>
+          <a href="#how" style="font-size: 14px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.15s;" onmouseenter="this.style.color='#fff'" onmouseleave="this.style.color='rgba(255,255,255,0.5)'">How It Works</a>
+          <a href="#about" style="font-size: 14px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.15s;" onmouseenter="this.style.color='#fff'" onmouseleave="this.style.color='rgba(255,255,255,0.5)'">About</a>
         </div>
       </div>
       <div class="footer-bottom">
@@ -772,9 +760,9 @@
     (function() {
       const el = document.getElementById('hero-heading');
       const lines = [
-        { text: 'Scale your practice ', accent: false },
-        { text: 'without', accent: true },
-        { text: ' adding staff', accent: false }
+        { text: 'Never miss a carryover, credit, or ', accent: false },
+        { text: 'inconsistency', accent: true },
+        { text: ' again', accent: false }
       ];
       let lineIdx = 0, charIdx = 0;
       let html = '';
