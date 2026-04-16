@@ -309,6 +309,7 @@
       .hero h1 { font-size: 36px; min-height: 90px; }
       .hero h1 .cursor { height: 34px; }
       .features, .products { grid-template-columns: 1fr 1fr; }
+      .benefits-grid { grid-template-columns: repeat(3, 1fr) !important; }
       .agents-banner { grid-template-columns: 1fr; padding: 36px 28px; }
       .how-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
       .about-inner { grid-template-columns: 1fr; }
@@ -338,6 +339,7 @@
       .section { padding: 72px 0; }
       .section-heading { font-size: 28px; }
       .features, .products, .how-grid { grid-template-columns: 1fr; }
+      .benefits-grid { grid-template-columns: 1fr 1fr !important; }
       .hero-btns { flex-direction: column; align-items: center; }
       .about-inner { grid-template-columns: 1fr; }
       .about-values { grid-template-columns: 1fr; }
@@ -447,7 +449,7 @@
       <div class="hero-tag"><span class="dot"></span> Agentic AI for Tax</div>
       <h1 id="hero-heading"></h1>
       <p>
-        AI agents analyze every return, surface what matters, and let your reviewers focus on judgment — not line-by-line checking.
+        AI agents perform the first-pass review across every 1040, so your team can handle more returns with less burnout.
       </p>
       <div class="hero-btns">
         <a href="#" class="btn-lg primary" onclick="openContactModal(event)">Request a Demo &rarr;</a>
@@ -526,15 +528,48 @@
     </div>
   </section>
 
-  <!-- AGENTS BANNER -->
+  <!-- WHY IT MATTERS -->
   <section class="section" style="background: var(--light);">
-
     <div class="container">
+      <div style="text-align: center; margin-bottom: 48px;">
+        <div class="section-tag" style="color: var(--navy);">Why It Matters</div>
+        <div class="section-heading" style="max-width: 520px; margin: 0 auto;">The impact on your practice</div>
+      </div>
+
+      <div class="benefits-grid" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-bottom: 48px;">
+        <div style="background: var(--white); border-radius: 14px; padding: 28px 22px; text-align: center; border: 1px solid var(--border);">
+          <div style="font-size: 28px; font-weight: 800; color: var(--green); margin-bottom: 6px; font-family: 'JetBrains Mono', monospace;">50%</div>
+          <div style="font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 4px;">Reduced review time</div>
+          <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.5;">AI handles the first pass so your team focuses on what needs judgment.</div>
+        </div>
+        <div style="background: var(--white); border-radius: 14px; padding: 28px 22px; text-align: center; border: 1px solid var(--border);">
+          <div style="font-size: 28px; font-weight: 800; color: var(--navy); margin-bottom: 6px; font-family: 'JetBrains Mono', monospace;">↓</div>
+          <div style="font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 4px;">Fewer errors</div>
+          <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.5;">Every line checked against IRS rules, carryovers, and prior year — nothing slips through.</div>
+        </div>
+        <div style="background: var(--white); border-radius: 14px; padding: 28px 22px; text-align: center; border: 1px solid var(--border);">
+          <div style="font-size: 28px; font-weight: 800; color: var(--gold); margin-bottom: 6px; font-family: 'JetBrains Mono', monospace;">+</div>
+          <div style="font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 4px;">More advisory hours</div>
+          <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.5;">Time saved on compliance becomes time spent on higher-value advisory work.</div>
+        </div>
+        <div style="background: var(--white); border-radius: 14px; padding: 28px 22px; text-align: center; border: 1px solid var(--border);">
+          <div style="font-size: 28px; font-weight: 800; color: var(--purple); margin-bottom: 6px; font-family: 'JetBrains Mono', monospace;">—</div>
+          <div style="font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 4px;">Less staff burnout</div>
+          <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.5;">Your team handles more returns without the late nights and manual line-checking.</div>
+        </div>
+        <div style="background: var(--white); border-radius: 14px; padding: 28px 22px; text-align: center; border: 1px solid var(--border);">
+          <div style="font-size: 28px; font-weight: 800; color: var(--teal); margin-bottom: 6px; font-family: 'JetBrains Mono', monospace;">✓</div>
+          <div style="font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 4px;">Consistent reviews</div>
+          <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.5;">Every return reviewed with the same rigor — regardless of who's assigned.</div>
+        </div>
+      </div>
+
+      <!-- Agents (supporting) -->
       <div class="agents-banner">
         <div>
           <h2>Powered by <span>specialized agents</span></h2>
           <p>
-            Domain agents each own a specific area of the 1040. Three cross-cutting agents handle AGI coordination, year-over-year comparison, and inter-agent validation. One orchestrator routes findings to your reviewers based on confidence.
+            Domain agents each own a specific area of the 1040 — from mortgage interest to capital gains. Cross-cutting agents handle AGI coordination, year-over-year comparison, and inter-agent validation. An orchestrator routes findings to your reviewers based on confidence.
           </p>
           <div class="agent-tags">
             <span class="domain">Mortgage Interest</span>
@@ -556,7 +591,7 @@
             <div class="pipe-num" style="background: rgba(92,201,160,0.15); color: #5cc9a0;">1</div>
             <div>
               <h4>Domain Execution</h4>
-              <p>All domain agents run in parallel, each querying its own IRS knowledge base</p>
+              <p>Each agent queries its own IRS knowledge base in parallel</p>
             </div>
           </div>
           <div class="pipe-step">
@@ -737,9 +772,9 @@
     (function() {
       const el = document.getElementById('hero-heading');
       const lines = [
-        { text: 'Tax review that ', accent: false },
-        { text: 'thinks', accent: true },
-        { text: ' before your team does', accent: false }
+        { text: 'Scale your practice ', accent: false },
+        { text: 'without', accent: true },
+        { text: ' adding staff', accent: false }
       ];
       let lineIdx = 0, charIdx = 0;
       let html = '';
