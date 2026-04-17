@@ -315,7 +315,6 @@
       .agents-banner { grid-template-columns: 1fr; padding: 36px 28px; }
       .how-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
       .about-inner { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 768px) {
       .hamburger { display: flex; }
@@ -335,11 +334,11 @@
         background: #1a1a1a; color: #fff !important; display: inline-block;
       }
       .hero { padding: 130px 0 80px; }
-      .hero h1 { font-size: 30px; min-height: 80px; }
-      .hero h1 .cursor { height: 28px; }
-      .hero p { font-size: 16px; }
+      .hero h1 { font-size: 26px; min-height: 100px; }
+      .hero h1 .cursor { height: 24px; }
+      .hero p { font-size: 15px; }
       .section { padding: 72px 0; }
-      .section-heading { font-size: 28px; }
+      .section-heading { font-size: 26px; }
       .features, .products, .how-grid { grid-template-columns: 1fr; }
       .impact-grid { grid-template-columns: 1fr !important; }
       .impact-grid > div:last-child { grid-column: auto !important; }
@@ -347,12 +346,18 @@
       .hero-btns { flex-direction: column; align-items: center; }
       .about-inner { grid-template-columns: 1fr; }
       .about-values { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
       .agents-banner { grid-template-columns: 1fr; padding: 32px 24px; }
       .agents-banner h2 { font-size: 26px; }
-      .cta h2 { font-size: 28px; }
+      .cta h2 { font-size: 26px; }
       .container { padding: 0 20px; }
       .container-narrow { padding: 0 20px; }
+      /* Product card: stack vertically on mobile */
+      .product-card { flex-direction: column !important; text-align: center; padding: 32px 24px !important; }
+      .product-card > div:first-child { margin: 0 auto; }
+      .product-badges { flex-wrap: wrap !important; justify-content: center; }
+      /* Footer: stack on mobile */
+      .footer-row { flex-direction: column !important; align-items: flex-start !important; gap: 20px !important; }
+      .footer-links { flex-wrap: wrap !important; gap: 16px !important; }
     }
 
     /* ─── ANIMATIONS ─── */
@@ -663,7 +668,7 @@
         <div class="section-heading" style="max-width: 480px; margin: 0 auto;">Agentic AI review for 1040 returns</div>
       </div>
 
-      <div style="max-width: 720px; margin: 0 auto; background: var(--white); border-radius: 20px; border: 2px solid var(--green); padding: 48px 44px; display: flex; gap: 36px; align-items: center;">
+      <div class="product-card" style="max-width: 720px; margin: 0 auto; background: var(--white); border-radius: 20px; border: 2px solid var(--green); padding: 48px 44px; display: flex; gap: 36px; align-items: center;">
         <div style="flex-shrink: 0;">
           <div class="prod-icon" style="background: var(--green-light); color: var(--green); width: 64px; height: 64px; border-radius: 16px; display: flex; align-items: center; justify-content: center;">
             <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
@@ -674,7 +679,7 @@
           <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 18px;">
             AI agents review every line of the 1040 — income, deductions, credits, and multi-state allocations. Each finding comes with source citations, prior-year comparison, and a confidence score so your reviewers know exactly where to focus.
           </p>
-          <div style="display: flex; flex-wrap: nowrap; gap: 8px;">
+          <div class="product-badges" style="display: flex; flex-wrap: nowrap; gap: 8px;">
             <span class="prod-badge" style="background: var(--green-light); color: var(--green);">Agentic AI Review</span>
             <span class="prod-badge" style="background: var(--navy-light); color: var(--navy);">Prior Year Comparison</span>
             <span class="prod-badge" style="background: var(--gold-light); color: var(--gold);">Configurable Skills</span>
@@ -733,7 +738,7 @@
   <!-- FOOTER -->
   <footer>
     <div class="container">
-      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 40px;">
+      <div class="footer-row" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 40px;">
         <div class="footer-brand">
           <div class="logo">
             <div class="logo-mark">A</div>
@@ -741,7 +746,7 @@
           </div>
           <p style="margin-top: 8px;">Agentic AI for tax return review.</p>
         </div>
-        <div style="display: flex; gap: 36px;">
+        <div class="footer-links" style="display: flex; gap: 36px;">
           <a href="#features" style="font-size: 14px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.15s;" onmouseenter="this.style.color='#fff'" onmouseleave="this.style.color='rgba(255,255,255,0.5)'">Platform</a>
           <a href="#products" style="font-size: 14px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.15s;" onmouseenter="this.style.color='#fff'" onmouseleave="this.style.color='rgba(255,255,255,0.5)'">Product</a>
           <a href="#how" style="font-size: 14px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.15s;" onmouseenter="this.style.color='#fff'" onmouseleave="this.style.color='rgba(255,255,255,0.5)'">How It Works</a>
