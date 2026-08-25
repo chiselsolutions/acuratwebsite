@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────────────────────
+   DESIGN TOKENS
+   Ported 1:1 from the original static index.html :root variables.
+   Exposed to Tailwind via @theme, so every token is usable as a
+   utility: bg-green, text-navy, border-border, font-mono, …
+   ───────────────────────────────────────────────────────────── */
+@theme {
+  /* Brand */
+  --color-green: #1b7a5e;
+  --color-green-hover: #22956f;
+  --color-green-light: #e6f5ef;
+  --color-green-faint: #f0faf5;
+  --color-green-bright: #5cc9a0;
+
+  /* Accents */
+  --color-navy: #1a3152;
+  --color-navy-light: #e1e8f0;
+  --color-navy-faint: #f0f3f7;
+  --color-gold: #b8860b;
+  --color-gold-light: #fdf3d7;
+  --color-gold-faint: #fffbeb;
+  --color-purple: #6b46c1;
+  --color-purple-light: #ede5ff;
+  --color-purple-faint: #f8f5ff;
+  --color-teal: #0e6b7a;
+  --color-teal-light: #d4f0f5;
+
+  /* Neutrals */
+  --color-dark: #0a1a14;
+  --color-dark-mid: #122a20;
+  --color-ink: #1a2e26;
+  --color-ink-secondary: #4a6b5e;
+  --color-ink-tertiary: #7a9b8e;
+  --color-light: #f7f8fa;
+  --color-border: #d8e8e0;
+  --color-danger: #c53030;
+
+  /* Typography */
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Motion */
+  --animate-fade-up: fadeUp 0.6s ease forwards;
+  --animate-fade-down: fadeDown 0.6s ease forwards;
+  --animate-blink: blink 0.8s step-end infinite;
+  --animate-pulse-dot: pulseDot 2s ease infinite;
+  --animate-modal-in: modalIn 0.3s ease;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes pulseDot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── BASE ─── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* offset for the fixed 60px navbar when jumping to #anchors */
+    scroll-padding-top: 72px;
+  }
+
+  body {
+    @apply bg-white font-sans text-ink antialiased;
+    line-height: 1.6;
+  }
+
+  ::selection {
+    @apply bg-green-light text-green;
+  }
+}
+
+/* ─── UTILITIES ─── */
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
