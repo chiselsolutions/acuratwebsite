@@ -67,10 +67,12 @@ to a single column on mobile:
   validation. The stored value is E.164 (`+12015550123`).
 - SMS opt-in with consent copy
 
-Client-side validation runs before submit: required fields, email format, a
-free-mail domain check on the *work* email, and `isValidPhoneNumber` — which
-checks the number against the selected country's real numbering plan rather than
-counting digits.
+Only **First name** and **Work email** are required; every other field is
+optional. Client-side validation runs before submit: the two required fields,
+email format, and a free-mail domain check on the *work* email. An optional
+field is validated only once it has a value — a phone number that is entered
+must pass `isValidPhoneNumber`, which checks it against the selected country's
+real numbering plan rather than counting digits.
 
 ### API calls
 
@@ -92,14 +94,14 @@ can add the multipart boundary.
 
 | Form field | API field |
 | --- | --- |
-| firstName | `first_name` |
-| lastName | `last_name` |
-| email | `work_email` |
-| firmName | `firm_name` |
-| taxSoftware | `tax_software` |
+| firstName | `first_name` **(required)** |
+| lastName | `last_name` *(omitted when empty)* |
+| email | `work_email` **(required)** |
+| firmName | `firm_name` *(omitted when empty)* |
+| taxSoftware | `tax_software` *(omitted when empty)* |
 | pms | `practice_management_system` *(omitted when empty)* |
-| returnVolume | `annual_return_volume` |
-| phone | `phone_number` *(E.164)* |
+| returnVolume | `annual_return_volume` *(omitted when empty)* |
+| phone | `phone_number` *(E.164, omitted when empty)* |
 | smsOptIn | `sms_opt_in` *(`"true"` / `"false"`)* |
 
 A `4xx` with `{ error: true, message, data: { work_email: [...] } }` puts the

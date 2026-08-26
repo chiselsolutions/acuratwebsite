@@ -81,17 +81,24 @@ export async function fetchDemoChoices({ signal } = {}) {
 export async function submitDemoRequest(values) {
   const body = new FormData()
 
+  /** Optional fields are left out entirely rather than sent as empty strings. */
+  const appendIfPresent = (field, value) => {
+    const trimmed = (value ?? '').trim()
+    if (trimmed) body.append(field, trimmed)
+  }
+
+  // Required.
   body.append(FIELD_MAP.firstName, values.firstName.trim())
-  body.append(FIELD_MAP.lastName, values.lastName.trim())
   body.append(FIELD_MAP.email, values.email.trim())
-  body.append(FIELD_MAP.firmName, values.firmName.trim())
-  body.append(FIELD_MAP.taxSoftware, values.taxSoftware)
-  body.append(FIELD_MAP.returnVolume, values.returnVolume)
-  body.append(FIELD_MAP.phone, values.phone)
   body.append(FIELD_MAP.smsOptIn, values.smsOptIn ? 'true' : 'false')
 
-  // Optional: omitted entirely rather than sent empty.
-  if (values.pms) body.append(FIELD_MAP.pms, values.pms)
+  // Optional.
+  appendIfPresent(FIELD_MAP.lastName, values.lastName)
+  appendIfPresent(FIELD_MAP.firmName, values.firmName)
+  appendIfPresent(FIELD_MAP.taxSoftware, values.taxSoftware)
+  appendIfPresent(FIELD_MAP.pms, values.pms)
+  appendIfPresent(FIELD_MAP.returnVolume, values.returnVolume)
+  appendIfPresent(FIELD_MAP.phone, values.phone)
 
   try {
     const response = await fetch(ENDPOINTS.demoRequest.create, {

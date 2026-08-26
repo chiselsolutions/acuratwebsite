@@ -35,11 +35,14 @@ const PERSONAL_EMAIL_DOMAINS = [
   'aol.com',
 ]
 
+/**
+ * Only first name and work email are required — everything else is optional and
+ * is validated only once the visitor has actually filled it in.
+ */
 function validate(values) {
   const errors = {}
 
   if (!values.firstName.trim()) errors.firstName = 'First name is required.'
-  if (!values.lastName.trim()) errors.lastName = 'Last name is required.'
 
   const email = values.email.trim()
   if (!email) {
@@ -50,15 +53,10 @@ function validate(values) {
     errors.email = 'Please use your work email address.'
   }
 
-  if (!values.firmName.trim()) errors.firmName = 'Firm name is required.'
-  if (!values.taxSoftware) errors.taxSoftware = 'Please select your tax software.'
-  if (!values.returnVolume) errors.returnVolume = 'Please select a range.'
-
-  // libphonenumber-js checks the number against that country's real numbering
-  // plan — length, prefix and all — rather than a naive digit count.
-  if (!values.phone) {
-    errors.phone = 'Phone number is required.'
-  } else if (!isValidPhoneNumber(values.phone)) {
+  // Optional, but a number that *is* entered has to be a real one.
+  // libphonenumber-js checks it against that country's actual numbering plan
+  // rather than counting digits.
+  if (values.phone && !isValidPhoneNumber(values.phone)) {
     errors.phone = 'Please enter a valid phone number for the selected country.'
   }
 
@@ -204,7 +202,6 @@ export function RequestDemoModal() {
             />
             <TextField
               label="Last name"
-              required
               autoComplete="family-name"
               placeholder="Smith"
               value={values.lastName}
@@ -223,7 +220,6 @@ export function RequestDemoModal() {
             />
             <TextField
               label="Firm name"
-              required
               autoComplete="organization"
               placeholder="Your firm"
               value={values.firmName}
@@ -232,7 +228,6 @@ export function RequestDemoModal() {
             />
             <Select
               label="Tax software used"
-              required
               placeholder="Select your tax software"
               options={choices?.taxSoftware ?? []}
               isLoading={isLoadingChoices}
@@ -251,7 +246,6 @@ export function RequestDemoModal() {
             />
             <Select
               label="Annual return volume"
-              required
               hint="Roughly how many returns your firm files each season. It helps us tailor the demo."
               placeholder="Select a range"
               options={choices?.returnVolume ?? []}
@@ -261,7 +255,6 @@ export function RequestDemoModal() {
               error={errors.returnVolume}
             />
             <PhoneField
-              required
               country={values.country}
               onCountryChange={setDirect('country')}
               value={values.phone}
